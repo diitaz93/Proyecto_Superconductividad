@@ -1,11 +1,13 @@
+function[H]=heissenberg(J,N)
 %%%%%%%%%%%%%%%%% HAMILTONIANO DE HEISSENBERG %%%%%%%%%%%%%%%%%%%%%%%%
-clear all
-close all
+% Genera la matriz del Hamiltoniano de Heissenberg en 1D con
+% condiciones de frontera fijas.
+% J es la constante de intercambio y N es el numero de espines
+%---------------------------------------------------------------------
+%clear all
+%close all
 %clc
-tic
-J=1; % Constante de intercambio
-N=5; % Número de espines
-%% Definición de matrices de Pauli
+%% Definiciï¿½n de matrices de Pauli
 sx=[0,1;1,0];
 sy=[0,-1i;1i,0];
 sz=[1,0;0,-1];
@@ -15,16 +17,16 @@ I=eye(2); % Identidad
 % capas las matrices de Pauli en orden x, y , z.
 S=cat(3,I,sx,sy,sz);
 %% Matriz de coeficientes
-% Ver documentación
+% Ver documentacion
 M=matriz(N);
 % Se inicializa el hamiltoniano en cero
 H=0;
-% Se empieza por calcular los términos de cada eje x,y o z
+% Se empieza por calcular los tï¿½rminos de cada eje x,y o z
 for d=1:3
     % Se recorre la matriz de coeficientes
     % Por fila
     for i=1:N-1
-        t=1; % Se inicializa el término del hamiltoniano en 1
+        t=1; % Se inicializa el tï¿½rmino del hamiltoniano en 1
         % Por cada entrada de la fila
         for j=1:N
             % Producto tensorial con identidad o matriz de Pauli
@@ -33,6 +35,6 @@ for d=1:3
         H=H+t;
     end
 end
-H=J*H
-t=toc
+H=J*H;
+end
         
