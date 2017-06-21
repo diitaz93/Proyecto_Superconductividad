@@ -1,12 +1,22 @@
-function[H]=heissenberg(J,N)
-%%%%%%%%%%%%%%%%% HAMILTONIANO DE HEISSENBERG %%%%%%%%%%%%%%%%%%%%%%%%
+function[H]=heissenberg(Jx,Jy,Jz,N)
+%%%%%%%%%%%%%%%%% HAMILTONIANO DE HEISSENBERG %%%%%%%%%%%%%%
 % Genera la matriz del Hamiltoniano de Heissenberg en 1D con
 % condiciones de frontera fijas.
-% J es la constante de intercambio y N es el numero de espines
-%---------------------------------------------------------------------
-%clear all
-%close all
-%clc
+% Jx, Jy, Jz son las constantes de intercambio para cada eje
+% y N es el numero de espines
+%-----------------------------------------------------------
+%% Incluye anisotropia con parámetros variables
+% if nargin==2
+%     J=varargin{1};
+%     N=varargin{2};
+% elseif nargin==4
+%     Jx=varargin{1};
+%     Jy=varargin[2};
+%     Jz=varargin{3};
+%     N=varargin{4};
+% end
+%% Anisotropia modo facil
+J=[Jx,Jy,Jz];
 %% Definici�n de matrices de Pauli
 sx=[0,1;1,0];
 sy=[0,-1i;1i,0];
@@ -32,9 +42,8 @@ for d=1:3
             % Producto tensorial con identidad o matriz de Pauli
             t=kron(t,S(:,:,d*M(i,j)+1));
         end
-        H=H+t;
+        H = H + J(d)*t;
     end
 end
-H=J*H;
 end
         
