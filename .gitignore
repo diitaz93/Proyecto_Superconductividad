@@ -1,3 +1,4 @@
 # Ignorar los pdfs
 *.pdf
-*¬
+*~
+*.m~
