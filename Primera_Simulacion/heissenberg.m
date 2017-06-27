@@ -1,4 +1,4 @@
-function[H]=heissenberg(Jx,Jy,Jz,N)
+function[H]=heissenberg(N,Jx,Jy,Jz)
 %%%%%%%%%%%%%%%%% HAMILTONIANO DE HEISSENBERG %%%%%%%%%%%%%%
 % Genera la matriz del Hamiltoniano de Heissenberg en 1D con
 % condiciones de frontera fijas.
